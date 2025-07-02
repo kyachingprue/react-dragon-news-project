@@ -9,7 +9,7 @@ const NewsCard = ({ news }) => {
   const [showText, setShowText] = useState("")
   return (
     <div>
-      <Link to={`/category/news/${_id}`}>
+      <Link to={`/news/${_id}`}>
         <div className='border mb-5 border-gray-400 rounded-xl'>
           <div className='flex justify-between items-center px-4 rounded-t-xl bg-gray-200 py-3'>
             <div className='flex justify-center items-center gap-3'>

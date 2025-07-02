@@ -1,16 +1,34 @@
 import React from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import Header from './Header';
+import RightNavbar from './Layout/RightNavbar';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const NewsCardDetails = () => {
-  const news = useLoaderData();
+  const data = useLoaderData();
+  const news = data.data[0];
   console.log(news);
-  const { _id } = useParams();
-  console.log(news.data._id, _id);
-
-
   return (
     <div>
-      <h2>This is News Card Details</h2>
+      <header>
+        <Header />
+      </header>
+      <main className='w-11/12 mx-auto grid grid-cols-12 gap-4'>
+        <section className='col-span-9 px-4'>
+          <h2 className='text-xl font-bold pb-4'>Dragon News</h2>
+          <div>
+            <img className='w-full' src={news.image_url} alt="" />
+            <h3 className='text-xl font-bold py-5'>{news.title}</h3>
+            <p className='text-gray-500 pb-5'>{news.details}</p>
+            <Link to="/" className='btn btn-accent text-white'>
+              <FaArrowLeft />
+              All news in this category</Link>
+          </div>
+        </section>
+        <aside className='col-span-3'>
+          <RightNavbar />
+        </aside>
+      </main>
     </div>
   );
 };

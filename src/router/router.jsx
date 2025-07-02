@@ -5,6 +5,8 @@ import NewsCardDetails from "../components/NewsCardDetails";
 import AuthLayout from "../Layout/AuthLayout";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import ErrorPage from "../Pages/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -20,13 +22,14 @@ const router = createBrowserRouter([
         path: "/category/:id",
         element: <CategoryNews></CategoryNews>,
         loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
-      },
-      {
-        path: '/category/news/:_id',
-        element: <NewsCardDetails></NewsCardDetails>,
-        loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/${params._id}`),
       }
     ]
+  },
+  {
+    path: '/news/:id',
+    element: <PrivateRoute><NewsCardDetails></NewsCardDetails></PrivateRoute>,
+    loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
+
   },
   {
     path: 'auth',
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <h3>Page not found</h3>
+    element: <ErrorPage></ErrorPage>
   }
 ]);
 
