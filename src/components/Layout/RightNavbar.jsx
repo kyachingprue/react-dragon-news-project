@@ -40,7 +40,7 @@ const RightNavbar = () => {
           </div>
         </div>
       </div>
-      <div className='flex flex-col bg-slate-300 px-4 rounded-xl'>
+      <div className='flex flex-col bg-slate-300 px-4 mt-10 rounded-xl'>
         <h2 className='text-xl font-bold py-3'>Q-Zone</h2>
         <div>
           <img className='py-4' src={swimming} alt="" />
